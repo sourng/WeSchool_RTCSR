@@ -23,6 +23,10 @@ class CreateTeachersTable extends Migration
             $table->string('religion',20);
             $table->string('phone',20);
             $table->text('address');
+
+            $table->string('nationals')->nullable();
+            $table->string('nationality')->nullable();
+
             $table->date('joining_date');
             $table->timestamps();
         });
@@ -36,5 +40,7 @@ class CreateTeachersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('teachers');
+        // $table->dropColumn('nationals');
+        // $table->dropColumn('nationality');
     }
 }

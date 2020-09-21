@@ -13,15 +13,15 @@
 					<form action="{{ url('profile/update') }}" class="form-horizontal form-groups-bordered validate" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 						@csrf
 						<div class="form-group">
-							<label class="col-sm-3 control-label">{{ _lang('Name') }}</label>
+							<label class="col-sm-3 control-label">{{ _lang('khmer_name') }}</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" name="name" value="{{$profile->name}}" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-3 control-label">{{ _lang('Latin Name') }}</label>
+							<label class="col-sm-3 control-label">{{ _lang('latin_name') }}</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" name="latin_name" value="{{ $profile->name }}" required>
+								<input type="text" class="form-control" name="latin_name" value="{{ $teachers[0]->latin_name }}" required>
 							</div>
 						</div>
 						

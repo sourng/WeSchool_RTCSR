@@ -934,8 +934,29 @@ $language["Contact Address"]="Contact Address";
 $language["Google MAP API"]="Google MAP API";
 $language["Google MAP Latitude"]="Google MAP Latitude";
 $language["Google MAP Longitude"]="Google MAP Longitude";
+
+
+// New Update Languages
 $language["Skills"]="Skills";
 $language['Foreign languages']="Foreign languages";
 $language['Work Experiences']="Work Experiences";
 $language["Education"]="Education";
 $language["From School"]="From School";
+
+$language['personal_profile']="A. Personal Profile";
+$language['khmer_name']="Full Name​";
+$language['latin_name']="Latin Name";
+$language['gender']="Gender";
+$language['nick_name']="Nick Name";
+$language['Male']="Male";
+$language['Female']="Female";
+
+$language['date_of_birth']="Date of Birth";
+$language['nationals']="National";
+$language['nationality']="Nationality";
+$language['religion']="Religion";
+
+$language['place_of_birth']="Place of Birth";
+$language['phone_no']="Phone Number";
+
+

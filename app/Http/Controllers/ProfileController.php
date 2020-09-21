@@ -7,6 +7,7 @@ use Auth;
 use Hash;
 use App\User;
 use App\Teacher;
+use App\TeacherAddress;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -17,7 +18,15 @@ class ProfileController extends Controller
     public function my_profile()
     {
         $profile = User::find(Auth::User()->id);
-        return view('backend.profile.profile-view',compact('profile'));
+		$teachers = Teacher::select('*','teachers.id AS id')
+        ->join('users','users.id','=','teachers.user_id')
+		->where('teachers.user_id',Auth::User()->id)->get();
+		
+		$address=TeacherAddress::where('teacher_id',$teachers[0]->id)->get();
+		
+		//dd($address);
+		
+        return view('backend.profile.profile-view',compact('profile','teachers','address'));
     }
 
 
@@ -36,9 +45,15 @@ class ProfileController extends Controller
         //     ->get();
         // $teacher=Teacher::where('user_id',Auth::User()->id)->get();
         // $teacher=Teacher::where('user_id',2);
-        // dd($teacher);
+		
+		$teachers = Teacher::select('*','teachers.id AS id')
+        ->join('users','users.id','=','teachers.user_id')
+		->where('teachers.user_id',Auth::User()->id)->get();
+        //->orderBy('teachers.id', 'DESC')->get();
+		
+         //dd($teachers[0]->name);
 
-        return view('backend.profile.profile-edit',compact('profile'));
+        return view('backend.profile.profile-edit',compact('profile','teachers'));
     }
 
 

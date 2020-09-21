@@ -934,9 +934,28 @@ $language["Contact Address"]="អាស័យដ្ឋាន";
 $language["Google MAP API"]="Google MAP API";
 $language["Google MAP Latitude"]="Google MAP Latitude";
 $language["Google MAP Longitude"]="Google MAP Longitude";
+
+// New Update Languages
+
 $language["Skills"]="ជំនាញផ្សេងៗ";
 $language['Foreign languages']="ភាសាបរទេស";
 $language['Work Experiences']="បទពិសោធន៍​ការងារ";
 $language["Education"]="ប្រវត្តការសិក្សា";
 $language["From School"]="ពីសាលា";
 
+$language['personal_profile']="ក/. ព័ត៌មានផ្ទាល់ខ្លួន";
+
+$language['khmer_name']="នាមត្រកូល​ នាមខ្លួន​";
+$language['latin_name']="ឈ្មោះឡាតាំង";
+$language['gender']="ភេទ";
+$language['nick_name']="ឈ្មោះហៅក្រៅ";
+$language['Male']="ប្រុស";
+$language['Female']="ស្រី";
+
+$language['date_of_birth']="ថ្ងៃ ខែ ឆ្នាំកំណើត";
+$language['nationals']="ជនជាតិ";
+$language['nationality']="សញ្ជាតិ";
+$language['religion']="សាសនា";
+
+$language['place_of_birth']="ទីកន្លែងកំណើត នៅ";
+$language['phone_no']="លេខទូរស័ព្ទ ";
