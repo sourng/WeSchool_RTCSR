@@ -4,6 +4,9 @@
 #/public/assignments/*
 #/storage/*.key
 #/ref
+/public/uploads/files
+/public/uploads/images
+/public/uploads/media
 /vendor
 .idea
 .idea/*
