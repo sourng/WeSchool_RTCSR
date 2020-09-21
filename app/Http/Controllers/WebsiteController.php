@@ -32,6 +32,9 @@ class WebsiteController extends Controller
 
     public function index($slug=""){	
 		$langs=app()->getLocale();
+		if($langs==""){
+			$langs="english";
+		}
 		
 		if(get_option('disabled_website') == "yes"){
 			return redirect('login');
@@ -76,6 +79,9 @@ class WebsiteController extends Controller
 	
 	public function single($slug=""){
 		$langs=app()->getLocale();
+		if($langs==""){
+			$langs="english";
+		}
 		if($slug == ""){
 			return view(theme().'.404');
 		}else{
