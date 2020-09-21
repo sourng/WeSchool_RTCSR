@@ -1,0 +1,79 @@
+CREATE TABLE `teacher_working_histories` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`teacher_id` INT(11) NULL DEFAULT NULL,
+	`company` VARCHAR(100) NULL DEFAULT NULL,
+	`position` VARCHAR(255) NULL DEFAULT NULL,
+	`start_date` DATE NULL DEFAULT NULL,
+	`end_date` DATE NULL DEFAULT NULL,
+	`description` VARCHAR(255) NULL DEFAULT NULL,
+	`attachment` VARCHAR(100) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=MyISAM
+AUTO_INCREMENT=1
+;
+
+CREATE TABLE `teacher_qualifications` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`teacher_id` INT(11) NULL DEFAULT NULL,
+	`certificate` VARCHAR(100) NULL DEFAULT NULL,
+	`major` VARCHAR(100) NULL DEFAULT NULL,
+	`school` VARCHAR(100) NULL DEFAULT NULL,
+	`degree` VARCHAR(50) NULL DEFAULT NULL,
+	`start_date` DATE NULL DEFAULT NULL,
+	`end_date` DATE NULL DEFAULT NULL,
+	`language` TEXT NULL,
+	`attachment` TEXT NULL,
+	`description` TEXT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=MyISAM
+AUTO_INCREMENT=1
+;
+
+CREATE TABLE `teacher_documents` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`teacher_id` INT(11) NULL DEFAULT NULL,
+	`name` VARCHAR(255) NULL DEFAULT NULL,
+	`attachment` VARCHAR(100) NULL DEFAULT NULL,
+	`description` TEXT NULL,
+	`created_date` DATETIME NULL DEFAULT NULL,
+	`created_by` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=MyISAM
+AUTO_INCREMENT=1
+;
+
+CREATE TABLE `teacher_skills` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`teacher_id` INT(11) NULL DEFAULT NULL,
+	`skill` VARCHAR(255) NULL DEFAULT NULL,
+	`mention` VARCHAR(255) NULL DEFAULT NULL,
+	`description` TEXT NULL,
+	`created_date` DATETIME NULL DEFAULT NULL,
+	`created_by` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=MyISAM
+AUTO_INCREMENT=2
+;
+
+
+CREATE TABLE `teacher_speaks` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`teacher_id` INT(11) NULL DEFAULT NULL,
+	`languages` VARCHAR(255) NULL DEFAULT NULL,	
+	`mention` VARCHAR(255) NULL DEFAULT NULL,
+	`description` TEXT NULL,
+	`created_date` DATETIME NULL DEFAULT NULL,
+	`created_by` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=MyISAM
+AUTO_INCREMENT=1;
