@@ -18,6 +18,12 @@
 								<input type="text" class="form-control" name="name" value="{{$profile->name}}" required>
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">{{ _lang('Latin Name') }}</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" name="latin_name" value="{{ $profile->name }}" required>
+							</div>
+						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-3 control-label">{{ _lang('Email') }}</label>

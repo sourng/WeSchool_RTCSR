@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Auth;
+use Hash;
+use App\User;
+use App\Teacher;
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\User;
-use Hash;
-use Auth;
 
 class ProfileController extends Controller
 {
@@ -21,6 +24,20 @@ class ProfileController extends Controller
     public function edit()
     {
         $profile = User::find(Auth::User()->id);
+        // $profile=User::leftJoin("teachers","teacher.user_id","user.id")
+        //                 ->select('teachers.*','users.*')
+        //                 ->findOrFail(Auth::User()->id);
+                        // ->get();
+        // $profile = DB::table('users')
+        //     ->join('teachers', 'users.id', '=', 'teachers.user_id')
+        //     // ->join('orders', 'users.id', '=', 'orders.user_id')
+        //     ->select('users.*', 'teachers.*')
+        //     ->where('users.id', Auth::User()->id)
+        //     ->get();
+        // $teacher=Teacher::where('user_id',Auth::User()->id)->get();
+        // $teacher=Teacher::where('user_id',2);
+        // dd($teacher);
+
         return view('backend.profile.profile-edit',compact('profile'));
     }
 
