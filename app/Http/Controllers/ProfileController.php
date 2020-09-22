@@ -18,6 +18,7 @@ class ProfileController extends Controller
     public function my_profile()
     {
         $profile = User::find(Auth::User()->id);
+		
 		$teachers = Teacher::select('*','teachers.id AS id')
         ->join('users','users.id','=','teachers.user_id')
 		->where('teachers.user_id',Auth::User()->id)->get();
@@ -33,18 +34,7 @@ class ProfileController extends Controller
     public function edit()
     {
         $profile = User::find(Auth::User()->id);
-        // $profile=User::leftJoin("teachers","teacher.user_id","user.id")
-        //                 ->select('teachers.*','users.*')
-        //                 ->findOrFail(Auth::User()->id);
-                        // ->get();
-        // $profile = DB::table('users')
-        //     ->join('teachers', 'users.id', '=', 'teachers.user_id')
-        //     // ->join('orders', 'users.id', '=', 'orders.user_id')
-        //     ->select('users.*', 'teachers.*')
-        //     ->where('users.id', Auth::User()->id)
-        //     ->get();
-        // $teacher=Teacher::where('user_id',Auth::User()->id)->get();
-        // $teacher=Teacher::where('user_id',2);
+       
 		
 		$teachers = Teacher::select('*','teachers.id AS id')
         ->join('users','users.id','=','teachers.user_id')

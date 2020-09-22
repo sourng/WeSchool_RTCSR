@@ -317,5 +317,7 @@ class TeacherController extends Controller
                                                         ));
     }
 
-    
+    public function assignments(){
+		return "Hello assignments";
+	}
 }

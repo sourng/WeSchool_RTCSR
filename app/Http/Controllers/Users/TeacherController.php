@@ -126,6 +126,7 @@ class TeacherController extends Controller
    }
    
    public function assignments(){
+		/*
 		$assignments = \App\Assignment::select('*','assignments.id AS id')
                             ->join('classes','classes.id','=','assignments.class_id')
                             ->join('sections','sections.id','=','assignments.class_id')
@@ -136,6 +137,21 @@ class TeacherController extends Controller
                             ->orderBy('assignments.id', 'DESC')
 							->groupBy('assignments.id')
                             ->get();
+		*/
+		$assignments = \App\Assignment::select('*','assignments.id AS id')
+                            ->join('subjects','subjects.id','=','assignments.subject_id')
+							->join('assign_subjects','assign_subjects.subject_id','=','subjects.id')
+                            ->join('teachers','teachers.id','=','assign_subjects.teacher_id')
+							->join('classes','classes.id','=','subjects.class_id')
+							->where('assign_subjects.teacher_id', get_teacher_id())
+                            ->where('assignments.session_id', get_option('academic_year'))
+                            ->orderBy('assignments.id', 'DESC')
+							->groupBy('assignments.id')
+                            ->get();
+							
+							//dd($assignments);
+							
+							
         return view('backend.private.teacher.assignments.assignment-list',compact('assignments'));
    }   
    
@@ -209,13 +225,28 @@ class TeacherController extends Controller
 	
 	public function show_assignment($id)
     {
-        $assignment = \App\Assignment::select('*','assignments.id AS id')
+        /*
+		$assignment = \App\Assignment::select('*','assignments.id AS id')
                             ->join('classes','classes.id','=','assignments.class_id')
                             ->join('sections','sections.id','=','assignments.class_id')
                             ->join('subjects','subjects.id','=','assignments.class_id')
                             ->where('assignments.id',$id)
 							->where('assignments.session_id', get_option('academic_year'))
                             ->first();
+		*/					
+		$assignment = \App\Assignment::select('*','assignments.id AS id')
+                            ->join('subjects','subjects.id','=','assignments.subject_id')
+							->join('assign_subjects','assign_subjects.subject_id','=','subjects.id')
+                            ->join('teachers','teachers.id','=','assign_subjects.teacher_id')
+							->join('classes','classes.id','=','subjects.class_id')
+							//->where('assign_subjects.teacher_id', get_teacher_id())
+                           // ->where('assignments.session_id', get_option('academic_year'))
+                            //->orderBy('assignments.id', 'DESC')
+							//->groupBy('assignments.id')
+							->where('assignments.id',$id)
+							->where('assignments.session_id', get_option('academic_year'))
+                            ->first();
+		//dd($assignment);				
 
         return view('backend.assignments.assignment-show',compact('assignment'));
     }
