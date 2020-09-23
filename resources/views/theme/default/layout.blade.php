@@ -59,7 +59,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">{{ get_option('site_title') }}</a>
+						<a class="navbar-brand" href="{{url('/')}}">{{ get_option('site_title') }}</a>
 					</div>
 					<!-- Collection of nav links and other content for toggling -->
 					<div id="navbarCollapse" class="collapse navbar-collapse">

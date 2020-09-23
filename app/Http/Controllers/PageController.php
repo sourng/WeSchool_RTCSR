@@ -18,7 +18,10 @@ class PageController extends Controller
      */
     public function index()
     {
+		//$langs=app()->getLocale();
+		
 		$pages = Page::all()->sortByDesc("id");
+		//dd($pages);
         return view('backend.cms.page.list',compact('pages'));
     }
 
@@ -43,7 +46,8 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {			
+    {		
+		$langs=app()->getLocale();	
 		$validator = Validator::make($request->all(), [
 			'page_title' => 'required',
 		]);
@@ -60,8 +64,10 @@ class PageController extends Controller
 			
 
         $page = new Page();
-		$slug = $request->input('slug') =="" ? strtolower(preg_replace('/[[:space:]]+/', '_', $request->page_title[0])) : $request->input('slug');
-	    $page->slug = str_replace("?","",$slug); 
+		//$slug = $request->input('slug') =="" ? strtolower(preg_replace('/[[:space:]]+/', '_', $request->page_title[0])) : $request->input('slug');
+	    $slug = $request->input('slug') =="" ? make_slug($request->page_title[0]) : make_slug($request->input('slug'));
+		
+		$page->slug = str_replace("?","",$slug); 
 		$page->page_status = $request->input('page_status');
 		if ($request->hasFile('featured_image')) {
 			$image = $request->file('featured_image');
@@ -82,7 +88,7 @@ class PageController extends Controller
 			$pageContent->page_content	= $request->page_content[$index] !="" ? $request->page_content[0] : $request->page_content[$index];
 			$pageContent->seo_meta_keywords	= $request->seo_meta_keywords[$index];
 			$pageContent->seo_meta_description	= $request->seo_meta_description[$index];
-			$pageContent->language	= $request->language[$index];
+			$pageContent->language	=$langs;// $request->language[$index];
 			$pageContent->save();
 			$index++;
 		}
@@ -139,6 +145,8 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {			
+		
+	
 		$validator = Validator::make($request->all(), [
 			'page_title' => 'required',
 		]);
@@ -155,7 +163,7 @@ class PageController extends Controller
 	
 
         $page = page::find($id);
-		$slug = $request->input('slug') =="" ? strtolower(preg_replace('/[[:space:]]+/', '_', $request->page_title[0])) : $request->input('slug');
+		$slug = $request->input('slug') =="" ? make_slug($request->page_title[0]) : make_slug($request->input('slug'));
 	    $page->slug = str_replace("?","",$slug);
 		$page->page_status = $request->input('page_status');
 		if ($request->hasFile('featured_image')) {
@@ -169,6 +177,8 @@ class PageController extends Controller
 		$page->author_id = Auth::User()->id;
         $page->save();
 		
+		return ($request);
+		
 		$index = 0;
 		foreach($request->page_title as $title){
 			if($request->page_content_id[$index] != ""){
@@ -181,7 +191,8 @@ class PageController extends Controller
 			$pageContent->page_content	= $request->page_content[$index] !="" ? $request->page_content[0] : $request->page_content[$index];
 			$pageContent->seo_meta_keywords	= $request->seo_meta_keywords[$index];
 			$pageContent->seo_meta_description	= $request->seo_meta_description[$index];
-			$pageContent->language	= $request->language[$index];
+			$locale = app()->getLocale();
+			$pageContent->language	=$langs; // $request->language[$index];
 			$pageContent->save();
 			$index++;
 		}

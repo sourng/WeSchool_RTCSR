@@ -54,6 +54,7 @@ class SiteNavigationController extends Controller
      */
     public function store(Request $request)
     {	
+		$locale = app()->getLocale();
 		$validator = Validator::make($request->all(), [
 			'menu_name' => 'required|max:191'
 		]);
@@ -72,6 +73,8 @@ class SiteNavigationController extends Controller
 		
         $sitenavigation= new SiteNavigation();
 	    $sitenavigation->menu_name = $request->input('menu_name');
+		
+		
 	
         $sitenavigation->save();
         

@@ -1,10 +1,13 @@
 <?php
+//$locale ="english";// app()->getLocale();
+
 if ( ! function_exists('dropdown_navigation_menu')){
 	function dropdown_navigation_menu($menu_name, $object="", $currentParent=0, $currLevel = 0, $prevLevel = 0){
 		$menu_id = get_navigation_id($menu_name);
-		
+		$locale = app()->getLocale();
 		$object = DB::table('site_navigation_items')
 				  ->where('navigation_id',$menu_id)
+				  ->where('language',$locale)
 				  ->orderBy("menu_order","asc")->get();
 
 		foreach ($object as $menu) {

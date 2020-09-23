@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @section('content')
-
+<?php $langs=app()->getLocale(); ?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default no-export">
@@ -30,6 +30,7 @@
 			<tbody>
 			  
 			  @foreach($pages as $page)
+			  <?php if($page->content[0]->language==$langs){ ?>
 			  <tr id="row_{{ $page->id }}">
 				<td>{{ $page->content[0]->page_title }}</td>
 				<td><img class="img-thumbnail post_image" src="{{ $page->featured_image != "" ? asset('public/uploads/media/'.$page->featured_image) : asset('public/uploads/no_image.jpg') }}"></td>
@@ -45,6 +46,7 @@
 				  </form>
 				</td>
 			  </tr>
+			  <?php } ?>
 			  @endforeach
 			</tbody>
 		  </table>

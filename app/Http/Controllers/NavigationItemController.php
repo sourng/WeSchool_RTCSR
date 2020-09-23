@@ -67,7 +67,8 @@ class NavigationItemController extends Controller
 			}			
 		}
 			
-	    
+	    $locale = app()->getLocale();
+		
         $navigationitem= new NavigationItem();
 	    $navigationitem->navigation_id = $request->input('navigation_id');
 		$navigationitem->menu_label = $request->input('menu_label');
@@ -76,6 +77,7 @@ class NavigationItemController extends Controller
 		$navigationitem->parent_id = $request->input('parent_id');
 	    $navigationitem->css_class = $request->input('css_class');
 	    $navigationitem->css_id = $request->input('css_id');
+		$navigationitem->language =  $locale;
 	
         $navigationitem->save();
         
@@ -135,7 +137,8 @@ class NavigationItemController extends Controller
 			}			
 		}
 	
-
+		$locale = app()->getLocale();
+		
         $navigationitem = NavigationItem::find($id);
 		$navigationitem->navigation_id = $request->input('navigation_id');
 		$navigationitem->menu_label = $request->input('menu_label');
@@ -144,6 +147,7 @@ class NavigationItemController extends Controller
 		$navigationitem->parent_id = $request->input('parent_id');
 	    $navigationitem->css_class = $request->input('css_class');
 	    $navigationitem->css_id = $request->input('css_id');
+		$navigationitem->language =  $locale;
 	
         $navigationitem->save();
 		

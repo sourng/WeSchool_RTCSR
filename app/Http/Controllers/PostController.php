@@ -49,6 +49,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {	
+		$langs=app()->getLocale();
+	
 		$validator = Validator::make($request->all(), [
 			'post_title' => 'required',
 			'featured_image' => 'nullable|image',
@@ -68,7 +70,7 @@ class PostController extends Controller
 			
 
         $post = new Post();
-		$slug = $request->input('slug') =="" ? strtolower(preg_replace('/[[:space:]]+/', '_', $request->post_title[0])) : $request->input('slug');
+		$slug = $request->input('slug') =="" ? make_slug( $request->post_title[0]) : make_slug($request->input('slug'));
 	    $post->slug = str_replace("?","",$slug);
 		$post->post_type = $request->input('post_type');
 		$post->post_status = $request->input('post_status');
@@ -150,6 +152,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+		$langs=app()->getLocale();
+		
 		$validator = Validator::make($request->all(), [
 			'post_title' => 'required',
 			'featured_image' => 'nullable|image',
@@ -167,7 +171,7 @@ class PostController extends Controller
 	
 
         $post = Post::find($id);
-		$slug = $request->input('slug') =="" ? strtolower(preg_replace('/[[:space:]]+/', '_', $request->post_title[0])) : $request->input('slug');
+		$slug = $request->input('slug') =="" ? make_slug($request->post_title[0]) : make_slug($request->input('slug'));
 	    $post->slug = str_replace("?","",$slug);
 		$post->post_type = $request->input('post_type');
 		$post->post_status = $request->input('post_status');
