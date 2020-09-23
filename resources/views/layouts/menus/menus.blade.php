@@ -21,6 +21,35 @@
 				{{ _lang('Update Profile') }}
 				</a>
 			</li>
+			
+			<li>
+				<a href="{{ url('profile/edit')}}">
+				{{ _lang('Family Profile') }}
+				</a>
+			</li>
+			<li>
+				<a href="{{ url('profile/edit')}}">
+				{{ _lang('Working Histories') }}
+				</a>
+			</li>
+			
+			<li>
+				<a href="{{ url('profile/edit')}}">
+				{{ _lang('Study History') }}
+				</a>
+			</li>
+			<li>
+				<a href="{{ url('profile/edit')}}">
+				{{ _lang('Skills') }}
+				</a>
+			</li>
+			
+			<li>
+				<a href="{{ url('profile/edit')}}">
+				{{ _lang('Speak Language') }}
+				</a>
+			</li>
+			
 			<li>
 				<a href="{{ url('profile/changepassword') }}">
 				{{ _lang('Change Password') }}
