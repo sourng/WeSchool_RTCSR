@@ -32,6 +32,7 @@ class WebsiteController extends Controller
 
     public function index($slug=""){	
 		$langs=app()->getLocale();
+		//print_r($langs);
 		if($langs==""){
 			$langs="english";
 		}
